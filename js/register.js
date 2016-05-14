@@ -16,7 +16,7 @@ var Registration = React.createClass({
     this.setState({Password: e.target.value});
   },
   RegistrationDataSubmit: function() {
-    dataForServer = JSON.stringify({username:Username, email:Email, password:Password});
+    dataForServer = JSON.stringify({username:this.state.Username, email:this.state.Email, password:this.state.Password});
     this.setState({data:dataForServer});
     $.ajax({
       url: '/api/register',
@@ -46,7 +46,6 @@ var Registration = React.createClass({
           className="username"
           type="text" 
           placeholder="Username"
-          value={this.state.Username}
           onChange={this.handleNameChange}
         />
       </div>
@@ -55,7 +54,6 @@ var Registration = React.createClass({
           className="email" 
           type="text" 
           placeholder="E-mail"
-          value={this.state.Email}
           onChange={this.handleEmailChange}
         />
       </div>
@@ -64,7 +62,6 @@ var Registration = React.createClass({
           className="password" 
           type="password" 
           placeholder="Password"
-          value={this.state.Password}
           onChange={this.handlePasswordChange}
         />
       </div>
@@ -73,7 +70,6 @@ var Registration = React.createClass({
           className="passwordrepeat" 
           type="password" 
           placeholder="Password"
-          value={this.state.Password}
           onChange={this.handlePasswordChange}
         />
       </div>
