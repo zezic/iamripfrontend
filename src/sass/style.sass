@@ -39,6 +39,14 @@ body, input
         border: none
         color: $fg
         padding: 10px
+        background-repeat: no-repeat
+        background-position: right 10px center
+        &.username
+          background-image: url("/images/icon-username.svg")
+        &.email
+          background-image: url("/images/icon-email.svg")
+        &.password,&.passwordrepeat
+          background-image: url("/images/icon-password.svg")
     .button
       display: block
       margin: 0 auto
@@ -50,3 +58,4 @@ body, input
       border: 0
       background-color: transparent
       margin-top: 48px
+      padding-right: 12px
