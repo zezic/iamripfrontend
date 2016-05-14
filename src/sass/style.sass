@@ -176,6 +176,7 @@ nav
     background-color: $faded
   &::after
     margin-left: -1px
+    right: 0
   input
     width: 100%
     box-sizing: border-box
@@ -185,6 +186,9 @@ nav
     padding: 10px
     background-repeat: no-repeat
     background-position: right 10px center
+    padding-right: 38px
+    &:focus
+      outline: 0
     &.username
       background-image: url("/images/icon-username.svg")
     &.email

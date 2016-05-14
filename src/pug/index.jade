@@ -4,16 +4,17 @@ block backdrop
 block content
   .display-table
     .table-cell
-      .row
-        .col-lg-offset-1.col-md-offset-0.col-lg-2.col-md-3.text-right.logotype-container
-          img(src="images/emblem.svg").fadein
-          .logotype
-            .maintext I am RIP
-            .secondarytext Delayed message service
-        .col-md-6
-          .inputblock.searchbar.fadein
-            input(type="text")
-            a.dice(href="/random")
-        .col-md-2
-          button.button.arrowed.fadein Search
+      form#searchform(action="/search", method="POST")
+        .row
+          .col-lg-offset-1.col-md-offset-0.col-lg-2.col-md-3.text-right.logotype-container
+            img(src="images/emblem.svg").fadein
+            .logotype
+              .maintext I am RIP
+              .secondarytext Delayed message service
+          .col-md-6
+            .inputblock.searchbar.fadein
+              input(type="text", name="words")
+              a.dice(href="/random")
+          .col-md-2
+            button.button.arrowed.fadein(type="submit", form="searchform") Search
 block overlays
