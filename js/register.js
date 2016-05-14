@@ -16,7 +16,7 @@ var Registration = React.createClass({
     this.setState({Password: e.target.value});
   },
   RegistrationDataSubmit: function() {
-    dataForServer = JSON.stringify({username:this.state.Username, email:this.state.Email, password:this.state.Password});
+    dataForServer = JSON.stringify({username:'dfdf', email:'dfdf', password:'dfdfd'});
     this.setState({data:dataForServer});
     $.ajax({
       url: '/api/register',
