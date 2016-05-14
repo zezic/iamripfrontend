@@ -1,0 +1,22 @@
+{
+  "name": "HiTutor",
+  "version": "0.0.0",
+  "description": "HiTutor Markup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zezic/hitutor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-pug": "^2.0.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^2.0.0-alpha"
+  },
+  "dependencies": {}
+}
