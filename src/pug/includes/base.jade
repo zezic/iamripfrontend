@@ -1,8 +1,9 @@
 doctype html
 head
-  title Registration - I am RIP
+  title I am RIP
   link(rel="stylesheet", href="css/vendor/bootstrap.min.css")
   link(rel="stylesheet", href="css/style.css")
+  link(rel="stylesheet", href="css/bootstrap-addons.css")
   link(rel="stylesheet", href="css/fonts.css")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js")
@@ -11,11 +12,35 @@ head
   script(src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js")
   meta(charset="utf-8")
 body
-  .overlay
+  block backdrop
+  .container.maincontent
+    block content
+  nav.navbar.navbar-fixed-top
+    .container
+      .navbar-nav.pull-right-xs
+        a.help(href="/help")
+      .navbar-right
+        #loginregister.loginregister
+          button.lightbutton.login Login
+          .separator
+          button.lightbutton.register Register
+  .overlay.hidden
     .overlay-inner
       .closelayer
       .container
         .closebutton
+        .row
+          .col-md-4.col-md-offset-4
+            #registration.hidden
+        .row
+          .col-md-4.col-md-offset-4
+            #login.hidden
+              .form
+                img.emblem(src="images/emblem.svg")
+                .inputblock: input(type="text").username
+                .inputblock: input(type="password").password
+                button.button Login
         block overlays
+  script(type="text/babel", src="js/bundle.js")
 
 

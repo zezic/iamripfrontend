@@ -1,8 +1,144 @@
 $faded: #c8cdd1
 $fg: #474e54
+html, body
+  min-height: 100%
+  height: 100%
 body, input
   font-family: "SF UI"
+  color: $fg
+.backdrop
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-image: url("../images/clouds.jpg")
+  background-size: cover
+  z-index: 1
+  animation: zoomin 10s infinite linear
+  opacity: 0
+  &.second
+    transform: scaleX(-1)
+    animation: zoomin-inverted 10s infinite linear 5s
+
+.maincontent
+  position: relative
+  z-index: 10
+  padding-top: 70px
+  height: 100%
+.logotype-container
+  margin-top: -4px
+  @media (max-width: 991px)
+    text-align: center !important
+    margin-bottom: 56px
+.logotype
+  display: inline-block
+  vertical-align: bottom
+  padding-left: 16px
+  overflow: hidden
+  animation: slidein 2s 1 cubic-bezier(.77,0,.18,1)
+  text-align: left
+  .maintext
+    font-weight: 900
+    text-transform: uppercase
+    font-size: 28px
+    line-height: 34px
+    white-space: nowrap
+  .secondarytext
+    font-size: 11px
+    white-space: nowrap
+.fadein
+  animation: fadein 1s 1 ease-in-out
+
+@keyframes slidein
+  from
+    max-width: 0px
+  to
+    max-width: 150px
+@keyframes fadein
+  from
+    opacity: 0
+  to
+    opacity: 1.0
+@keyframes zoomin
+  0%
+    transform: scaleX(1) scaleY(1)
+    opacity: 0.0
+  30%
+    opacity: 1.0
+  70%
+    opacity: 1.0
+  100%
+    transform: scaleX(2) scaleY(2)
+    opacity: 0.0
+@keyframes zoomin-inverted
+  0%
+    transform: scaleX(-1) scaleY(1)
+    opacity: 0.0
+  30%
+    opacity: 1.0
+  70%
+    opacity: 1.0
+  100%
+    transform: scaleX(-2) scaleY(2)
+    opacity: 0.0
+
+// Navbar
+
+nav
+  .help
+    background-image: url("../images/icon-help.svg")
+    width: 18px
+    height: 18px
+    background-repeat: no-repeat
+    background-position: center center
+    display: inline-block
+    padding: 24px 36px
+.loginregister
+  .lightbutton
+    background-color: transparent
+    border: 0px none
+    padding: 14px
+    display: inline-block
+    color: $fg
+    vertical-align: top
+    @media (max-width: 767px)
+      width: 48%
+  .separator
+    display: inline-block
+    width: 1px
+    height: 26px
+    background-color: $faded
+    margin-top: 12px
+  @media (max-width: 767px)
+    position: fixed
+    bottom: 8px
+    left: 0px
+    width: 100%
+    text-align: center
+
+// Searchbar
+
+.display-table
+  display: table
+  height: 100%
+  width: 100%
+  padding-bottom: 70px
+  .table-cell
+    display: table-cell
+    vertical-align: middle
+.searchbar .dice
+  position: absolute
+  padding: 20px
+  background-image: url("../images/icon-dice.svg")
+  background-position: center
+  background-repeat: no-repeat
+  right: 2px
+
+// Overlay
+
 .overlay
+  z-index: 20
   display: table
   position: fixed
   top: 0
@@ -35,44 +171,55 @@ body, input
       display: block
       margin: 0 auto
       padding-bottom: 24px
-    .inputblock
-      position: relative
-      border-bottom: 1px solid $faded
-      margin-top: 20px
-      &::before, &::after
-        content: ' '
-        //display: block
-        position: absolute
-        bottom: 0
-        width: 1px
-        height: 7px
-        background-color: $faded
-      &::after
-        margin-left: -1px
-      input
-        width: 100%
-        box-sizing: border-box
-        background-color: transparent
-        border: none
-        color: $fg
-        padding: 10px
-        background-repeat: no-repeat
-        background-position: right 10px center
-        &.username
-          background-image: url("../images/icon-username.svg")
-        &.email
-          background-image: url("../images/icon-email.svg")
-        &.password,&.passwordrepeat
-          background-image: url("../images/icon-password.svg")
-    .button
-      display: block
-      margin: 0 auto
-      text-align: center
-      background-image: url("../images/button.svg")
-      background-size: 100% 100%
-      height: 37px
-      width: 141px
-      border: 0
-      background-color: transparent
-      margin-top: 48px
-      padding-right: 12px
+.overlay .form .button,
+.button.arrowed
+  display: block
+  margin: 0 auto
+  text-align: center
+  background-image: url("../images/button.svg")
+  background-size: 100% 100%
+  height: 37px
+  width: 141px
+  border: 0
+  background-color: transparent
+  margin-top: 48px
+  padding-right: 12px
+  &.arrowed
+    margin-top: 4px
+    @media (max-width: 991px)
+      margin-top: 30px
+.inputblock
+  position: relative
+  border-bottom: 1px solid $faded
+  margin-top: 20px
+  &.searchbar
+    margin-top: 0px
+  &::before, &::after
+    content: ' '
+    //display: block
+    position: absolute
+    bottom: 0
+    width: 1px
+    height: 7px
+    background-color: $faded
+  &::after
+    margin-left: -1px
+    right: 0
+  input
+    width: 100%
+    box-sizing: border-box
+    background-color: transparent
+    border: none
+    color: $fg
+    padding: 10px
+    background-repeat: no-repeat
+    background-position: right 10px center
+    padding-right: 38px
+    &:focus
+      outline: 0
+    &.username
+      background-image: url("/images/icon-username.svg")
+    &.email
+      background-image: url("/images/icon-email.svg")
+    &.password,&.passwordrepeat
+      background-image: url("/images/icon-password.svg")
