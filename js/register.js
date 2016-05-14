@@ -37,8 +37,7 @@ var Registration = React.createClass({
   render: function() {
     return (
       <form 
-        className="form" 
-        onSubmit={this.RegistrationDataSubmit}
+        className="form"
       >
       <img className="emblem" src="images/emblem.svg"/>
       <div className="inputblock">
@@ -73,7 +72,7 @@ var Registration = React.createClass({
           onChange={this.handlePasswordChange}
         />
       </div>
-      <button type="submit" className="button" onSubmit={this.RegistrationDataSubmit}>Register</button>
+      <button className="button" onClick={this.RegistrationDataSubmit}>Register</button>
     </form>
     );
   }
