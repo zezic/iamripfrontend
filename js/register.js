@@ -1,20 +1,20 @@
 var Registration = React.createClass({
   render: function() {
     return (
-      <div class="form"><img class="emblem" src="images/emblem.svg"/>
-      <div class="inputblock">
-        <input class="username" type="text" />
+      <div className="form"><img className="emblem" src="images/emblem.svg"/>
+      <div className="inputblock">
+        <input className="username" type="text" />
       </div>
-      <div class="inputblock">
-        <input class="email" type="text" />
+      <div className="inputblock">
+        <input className="email" type="text" />
       </div>
-      <div class="inputblock">
-        <input class="password" type="password" />
+      <div className="inputblock">
+        <input className="password" type="password" />
       </div>
-      <div class="inputblock">
-        <input class="passwordrepeat" type="password" />
+      <div className="inputblock">
+        <input className="passwordrepeat" type="password" />
       </div>
-      <button class="button">Register</button>
+      <button className="button">Register</button>
     </div>
     );
   }
