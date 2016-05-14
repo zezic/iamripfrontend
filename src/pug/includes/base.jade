@@ -4,12 +4,12 @@ head
   link(rel="stylesheet", href="css/vendor/bootstrap.min.css")
   link(rel="stylesheet", href="css/style.css")
   link(rel="stylesheet", href="css/bootstrap-addons.css")
-  //link(rel="stylesheet", href="css/fonts.css")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js")
+  link(rel="stylesheet", href="css/fonts.css")
+  //script(src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js")
+  //script(src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js")
+  //script(src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js")
+  //script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js")
+  //script(src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js")
   meta(charset="utf-8")
   meta(name="viewport", content="width=device-width, initial-scale=1")
 body
@@ -25,14 +25,14 @@ body
           button.lightbutton.login Login
           .separator
           button.lightbutton.register Register
-  .overlay
+  .overlay.hidden
     .overlay-inner
       .closelayer
       .container
         .closebutton
         .row
           .col-md-4.col-md-offset-4
-            #registration
+            #registration.hidden
         .row
           .col-md-4.col-md-offset-4
             #login.hidden
@@ -42,6 +42,7 @@ body
                 .inputblock: input(type="password").password
                 button.button Login
         block overlays
-  script(type="text/babel", src="js/bundle.js")
+  //script(src="js/prod/vendor-bundle.js")
+  script(type="text/babel", src="js/prod/bundle.js")
 
 
