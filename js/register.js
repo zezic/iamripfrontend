@@ -1,7 +1,7 @@
 var Registration = React.createClass({
   render: function() {
     return (
-      <div class="form"><img class="emblem" src="images/emblem.svg">
+      <div class="form"><img class="emblem" src="images/emblem.svg" />
       <div class="inputblock">
         <input class="username" type="text" />
       </div>
