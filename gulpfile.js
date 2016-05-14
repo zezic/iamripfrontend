@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var pug = require('gulp-pug');
+var concat = require('gulp-concat');
 
 // Compile Our Sass
 gulp.task('sass', function() {
@@ -25,9 +26,16 @@ gulp.task('pug', function() {
         .pipe(gulp.dest('./'));
 });
 
+// Concat JS
+gulp.task('scripts', function() {
+    return gulp.src('js/*.js')
+        .pipe(concat('bundle.js'))
+        .pipe(gulp.dest('js/'));
+});
+
 // Watch Files For Changes
 gulp.task('watch', function() {
-    // gulp.watch('js/*.js', ['lint', 'scripts']);
+    gulp.watch('js/*.js', ['scripts']);
     gulp.watch('src/sass/*.sass', ['sass']);
     gulp.watch('src/sass/includes/*.sass', ['sass']);
     gulp.watch('src/pug/*.jade', ['pug']);
@@ -35,5 +43,5 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['sass', 'pug', 'watch']);
+gulp.task('default', ['sass', 'pug', 'scripts', 'watch']);
 // gulp.task('default', ['sass', 'watch']);
