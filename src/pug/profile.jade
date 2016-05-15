@@ -4,13 +4,13 @@ block content
   .row
     .col-lg-2.col-md-3
       .sidebar.hidden-xs
-        - var page = "sources"
+        //- var page = "sources"
         for pagename in ["messages", "sources", "settings"]
           if page == pagename
             - var aclass = "active"
           else
             - var aclass = ""
-          a(href="/profile/"+pagename+"/", class=aclass) #{pagename}
+          a(href="/profile/"+pagename, class=aclass) #{pagename}
           if pagename == "messages"
             .separator
             .add-message

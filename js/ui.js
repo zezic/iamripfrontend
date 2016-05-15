@@ -13,10 +13,44 @@ function logout() {
   location.href = "/";
 }
 
+function Api(params) {
+  ok = params.ok
+  fail = params.fail
+  $.ajax({
+    url: '/api/'+params.url,
+    dataType: 'json',
+    type: params.method,
+    data: JSON.stringify(params.data),
+    contentType:'application/json',
+    success: function(data) {
+      ok(data);
+    },
+    error: function(xhr, status, err) {
+      fail();
+      console.error(status, err.toString());
+    }
+  });
+}
+function ShowMessage(text) {
+  $("#message .text").text(text);
+  $(".overlay2").fadeIn();
+  $(".overlay2").css("display", "flex");
+  setTimeout(function(){
+    $(".overlay2").fadeOut();
+  }, 4000);
+}
+  //Api({
+    //url: 'login',
+    //method: 'POST',
+    //data: { username: "zezic", password: "12345" },
+    //fail: function(){},
+    //ok: function(){}
+  //});
 $(document).ready(function(){
   $('.logout').on('click', function(){ logout(); });
   $('.closebutton, .closelayer').on('click', function(){
     $('.overlay').fadeOut();
   });
 });
+
 

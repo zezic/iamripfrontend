@@ -12,7 +12,7 @@ body, input
   left: 0
   width: 100%
   height: 100%
-  background-image: url("../images/clouds.jpg")
+  background-image: url("/images/clouds.jpg")
   background-size: cover
   z-index: 1
   animation: zoomin 10s infinite linear 2s
@@ -28,6 +28,8 @@ body, input
   height: 100%
   @media (min-width: 767px)
     padding-top: 100px
+  @media (max-width: 767px)
+    margin-bottom: 80px
 .logotype-container
   margin-top: -4px
   transition: margin-bottom 0.5s ease-in-out
@@ -104,7 +106,7 @@ nav
     background-image: linear-gradient(to top, rgba(255,255,255,0) 0%, white 100%)
     pointer-events: none
   .help
-    background-image: url("../images/icon-help.svg")
+    background-image: url("/images/icon-help.svg")
     width: 18px
     height: 18px
     background-repeat: no-repeat
@@ -154,7 +156,7 @@ nav
     display: none
 
 .add-message
-  background-image: url("../images/icon-add.svg")
+  background-image: url("/images/icon-add.svg")
   width: 18px
   height: 18px
   background-repeat: no-repeat
@@ -185,7 +187,7 @@ nav
 .searchbar .dice
   position: absolute
   padding: 20px
-  background-image: url("../images/icon-dice.svg")
+  background-image: url("/images/icon-dice.svg")
   background-position: center
   background-repeat: no-repeat
   right: 2px
@@ -243,10 +245,17 @@ nav
 // Profile Sources
 
 .row.source
+  .time
+    @media (max-width: 767px)
+      text-align: left
+      margin-top: 10px
   padding-bottom: 30px
   @media (max-width: 991px)
     padding-top: 30px
     padding-bottom: 0px
+  @media (max-width: 767px)
+    padding-top: 20px
+    padding-bottom: 20px
   .firstrow
     white-space: nowrap
   .power, .icon
@@ -316,6 +325,20 @@ nav
 
 
 // Overlay
+.overlay2
+  z-index: 3000
+  display: flex
+  background-color: white
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  position: fixed
+  align-items: center
+  .text
+    text-align: center
+    width: 100%
+    font-size: 24px
 
 .overlay
   z-index: 2000
@@ -326,6 +349,7 @@ nav
   width: 100%
   height: 100%
   background-color: rgba(255,255,255,0.8)
+  background: radial-gradient(white, rgba(255,255,255,0.9));
   .overlay-inner
     display: table-cell
     vertical-align: middle
@@ -341,7 +365,7 @@ nav
       z-index: 10
       position: relative
   .closebutton
-    background-image: url("../images/close.svg")
+    background-image: url("/images/close.svg")
     height: 40px
     background-repeat: no-repeat
     background-position: right center
@@ -357,7 +381,7 @@ nav
   display: block
   margin: 0 auto
   text-align: center
-  background-image: url("../images/button.svg")
+  background-image: url("/images/button.svg")
   background-size: 100% 100%
   height: 37px
   width: 141px
