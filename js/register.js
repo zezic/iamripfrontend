@@ -15,7 +15,7 @@ var Registration = React.createClass({
     this.setState({passwordRep: e.target.value});
   },
   RegistrationDataSubmit: function(e) {
-    var dataForServer = JSON.stringify({username:this.state.username, email:this.state.email, password:this.state.password});
+    var dataForServer = {username:this.state.username, email:this.state.email, password:this.state.password};
     this.setState({data:dataForServer});
     var that = this;
     Api({
@@ -111,7 +111,7 @@ var Login = React.createClass({
     this.setState({password: e.target.value});
   },
   LoginDataSubmit: function(e) {
-    var dataForServer = JSON.stringify({username:this.state.username, password:this.state.password});
+    var dataForServer = {username:this.state.username, password:this.state.password};
     this.setState({data:dataForServer});
     var that = this;
     Api({
