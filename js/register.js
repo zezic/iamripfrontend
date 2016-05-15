@@ -29,9 +29,9 @@ var Registration = React.createClass({
           document.getElementById('registration')
         );
       },
-      ok: function(){
-        that.setState({data: data});
-        location.href="/profile/";
+      ok: function(data){
+        //that.setState({data: data});
+        location.href="/profile";
       }
     });
     // $.ajax({
@@ -125,9 +125,9 @@ var Login = React.createClass({
           document.getElementById('login')
         );
       },
-      ok: function(){
-        that.setState({data: data});
-        location.href="/profile/";
+      ok: function(data){
+       // that.setState({data: data});
+        location.href="/profile";
       }
     });
     // $.ajax({
