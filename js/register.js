@@ -17,26 +17,42 @@ var Registration = React.createClass({
   RegistrationDataSubmit: function(e) {
     var dataForServer = JSON.stringify({username:this.state.username, email:this.state.email, password:this.state.password});
     this.setState({data:dataForServer});
-    $.ajax({
-      url: '/api/register',
-      dataType: 'json',
-      type: 'POST',
-      data:dataForServer,
-      contentType:'application/json',
-      success: function(data) {
-        this.setState({data: data});
-        location.href="/profile";
-      }.bind(this),
-      error: function(xhr, status, err) {
-        this.setState({data:dataForServer});
-        console.error(this.props.url, status, err.toString());
+    var that = this;
+    Api({
+      url: 'register',
+      method: 'POST',
+      data: dataForServer,
+      fail: function(){
+        that.setState({data:dataForServer});
         ReactDOM.render(
           <Registration/>,
           document.getElementById('registration')
         );
-      }.bind(this)
+      },
+      ok: function(){
+        that.setState({data: data});
+        location.href="/profile/";
+      }
     });
-    //getInitialState();
+    // $.ajax({
+    //  url: '/api/register',
+    //  dataType: 'json',
+    //  type: 'POST',
+    //  data:dataForServer,
+    //  contentType:'application/json',
+    //  success: function(data) {
+    //    this.setState({data: data});
+    //    location.href="/profile";
+    //  }.bind(this),
+    //  error: function(xhr, status, err) {
+    //    this.setState({data:dataForServer});
+    //    console.error(this.props.url, status, err.toString());
+    //    ReactDOM.render(
+    //      <Registration/>,
+    //      document.getElementById('registration')
+    //    );
+    //  }.bind(this)
+    //}); 
   },
   render: function() {
     return (
@@ -88,7 +104,7 @@ var Login = React.createClass({
   getInitialState: function() {
     return {username:'', password:''};
   },
-  handleChangeName: function (e) {
+  handleChangeLogin: function (e) {
     this.setState({username: e.target.value});
   },
   handleChangePassword: function (e) {
@@ -97,26 +113,42 @@ var Login = React.createClass({
   LoginDataSubmit: function(e) {
     var dataForServer = JSON.stringify({username:this.state.username, password:this.state.password});
     this.setState({data:dataForServer});
-    $.ajax({
-      url: '/api/login',
-      dataType: 'json',
-      type: 'POST',
-      data:dataForServer,
-      contentType:'application/json',
-      success: function(data) {
-        this.setState({data: data});
-        location.href="/profile/";
-      }.bind(this),
-      error: function(xhr, status, err) {
-        this.setState({data:dataForServer});
-        console.error(this.props.url, status, err.toString());
+    var that = this;
+    Api({
+      url: 'login',
+      method: 'POST',
+      data: dataForServer,
+      fail: function(){
+        that.setState({data:dataForServer});
         ReactDOM.render(
           <Login/>,
           document.getElementById('login')
         );
-      }.bind(this)
+      },
+      ok: function(){
+        that.setState({data: data});
+        location.href="/profile/";
+      }
     });
-    //getInitialState();
+    // $.ajax({
+    //  url: '/api/login',
+    //  dataType: 'json',
+    //  type: 'POST',
+    //  data:dataForServer,
+    //  contentType:'application/json',
+    //  success: function(data) {
+    //    this.setState({data: data});
+    //    location.href="/profile/";
+    //  }.bind(this),
+    //  error: function(xhr, status, err) {
+    //    this.setState({data:dataForServer});
+    //    console.error(this.props.url, status, err.toString());
+    //    ReactDOM.render(
+    //      <Login/>,
+    //      document.getElementById('login')
+    //    );
+    //  }.bind(this)
+    //});
   },
   render: function() { 
     return(
@@ -164,16 +196,21 @@ var RegistrationOpen = React.createClass({
     );
   }
 });
-
-ReactDOM.render(
-  <Registration/>,
-  document.getElementById('registration')
-);
-ReactDOM.render(
-  <Login/>,
-  document.getElementById('login')
-);
-ReactDOM.render(
-  <RegistrationOpen/>,
-  document.getElementById('loginregister')
-);
+if ($('#registration').length>0) {
+  ReactDOM.render(
+    <Registration/>,
+    document.getElementById('registration')
+  );
+}
+if ($('#login').length>0) {
+  ReactDOM.render(
+    <Login/>,
+    document.getElementById('login')
+  );
+}
+if ($('#loginregister').length>0) {
+  ReactDOM.render(
+    <RegistrationOpen/>,
+    document.getElementById('loginregister')
+  );
+}
