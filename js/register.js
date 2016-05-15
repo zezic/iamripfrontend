@@ -11,18 +11,24 @@ var Registration = React.createClass({
    // Email: React.PropTypes.string,
    // Password: React.PropTypes.string
   //},
-  handleChange: function (e) {
-    var tar = e.target.className;
-    var stit = {username:'',email:'',password:''};
-    stit = {tar:e.target.value};
-    //this.setState({tar: e.target.value});
+  handleChangeName: function (e) {
+    this.setState({username: e.target.value});
+  },
+  handleChangeEmail: function (e) {
+    this.setState({email: e.target.value});
+  },
+  handleChangePassword: function (e) {
+    this.setState({password: e.target.value});
+  },
+  handleChangePasswordRep: function (e) {
+    this.setState({passwordRep: e.target.value});
   },
   RegistrationDataSubmit: function(e) {
     //e.preventDefault();
-    //console.log(this.state.username);
-    //console.log(this.state.email);
-    //console.log(this.state.password);
-    var dataForServer = JSON.stringify({username:stit.username, email:stit.email, password:stit.password});
+    //console.log(this);
+   // console.log(this.propsil);
+   // console.log(this.props.password);
+    var dataForServer = JSON.stringify({username:this.state.username, email:this.props.email, password:this.state.password});
     this.setState({data:dataForServer});
     $.ajax({
       url: '/api/register',
@@ -38,6 +44,7 @@ var Registration = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+    //getInitialState();
   },
   render: function() {
     return (
@@ -51,7 +58,7 @@ var Registration = React.createClass({
           type="text" 
           placeholder="Username"
           //value={this.state.username} 
-          onChange={this.handleChange}
+          onChange={this.handleChangeName}
         />
       </div>
       <div className="inputblock">
@@ -60,7 +67,7 @@ var Registration = React.createClass({
           type="text" 
           placeholder="E-mail"
         //  value={this.state.email} 
-          onChange={this.handleChange}
+          onChange={this.handleChangeEmail}
         />
       </div>
       <div className="inputblock">
@@ -69,7 +76,7 @@ var Registration = React.createClass({
           type="password" 
           placeholder="Password"
         //  value={this.state.password} 
-          onChange={this.handleChange}
+          onChange={this.handleChangePassword}
         />
       </div>
       <div className="inputblock">
@@ -77,7 +84,7 @@ var Registration = React.createClass({
           className="passwordrepeat" 
           type="password" 
           placeholder="Repeat Password"
-          onChange={this.handleChange}
+          onChange={this.handleChangePasswordRep}
         />
       </div>
       <button onClick={this.RegistrationDataSubmit} className="button">Register</button>
