@@ -1,0 +1,16 @@
+extends ./includes/base.jade
+block backdrop
+  .backdrop.clouds.second
+  .backdrop.clouds.first
+block content
+  .display-table
+    .table-cell
+      .row
+        .col-lg-offset-1.col-md-offset-1.col-lg-10.col-md-10.message-view
+          h3 О проекте
+          p Сервис позволяет вам оставить сообщение, которое будет отображено по ссылке при достаточно долгом отсутствии вас онлайн.
+          p(style="font-size: 0.5em; opacity: 0.5;")
+          | На данный момент по адресу 
+          a(href="/random") /random 
+          | выводятся все сообщения. Открыто в целях демонастрации.
+block overlays
