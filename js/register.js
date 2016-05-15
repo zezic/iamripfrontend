@@ -59,7 +59,7 @@ var Registration = React.createClass({
       <div 
         className="form" 
       >
-      <img className="emblem" src="images/emblem.svg"/>
+      <img className="emblem" src="/images/emblem.svg"/>
       <div className="inputblock">
         <input 
           className="username"
@@ -152,7 +152,7 @@ var Login = React.createClass({
   },
   render: function() { 
     return(
-      <div className="form"><img className="emblem" src="images/emblem.svg"/>
+      <div className="form"><img className="emblem" src="/images/emblem.svg"/>
         <div className="inputblock">
           <input 
             className="username" 

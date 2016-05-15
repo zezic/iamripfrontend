@@ -51,6 +51,37 @@ $(document).ready(function(){
   $('.closebutton, .closelayer').on('click', function(){
     $('.overlay').fadeOut();
   });
+  $('.savesettings').on('click', function(){
+    var data = {}
+    props = ["firstname", "lastname", "password"]
+    for (var prop in props) {
+      var key = props[prop]
+      console.log(key);
+      var target = 'input.'+key;
+      console.log(target);
+      if ($(target).val().length > 0) {
+        if (key == "password") {
+          if ($(target).val() != $(target+"repeat").val()) {
+            ShowMessage('Passwords mismatch!');
+            return;
+          }
+        }
+        data[key] = $(target).val();
+        console.log(data[key]);
+      }
+    }
+    if (Object.keys(data).length > 0) {
+      Api({
+        url: 'me',
+        method: 'PATCH',
+        data: data,
+        fail: function(){ ShowMessage('Server returned error :( sorry'); },
+        ok: function(){ ShowMessage('Profile updated.'); }
+      });
+    } else {
+      ShowMessage('Nothing to save.');
+    }
+  });
 });
 
 
