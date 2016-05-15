@@ -81,24 +81,9 @@ var Registration = React.createClass({
     );
   }
 });
-var RegistrationOpen = React.createClass({
-  ClickButtonForm:function(){
 
-  },
-  render: function() {
-    return(
-      <button onClick={this.ClickButtonForm} className="lightbutton login">Login</button>
-      <div className="separator"></div>
-      <button onClick={this.ClickButtonForm} className="lightbutton register">Register</button>
-    );
-  }
-});
 
 ReactDOM.render(
     <Registration/>,
     document.getElementById('registration')
-  );
-ReactDOM.render(
-    <RegistrationOpen/>,
-    document.getElementById('loginregister')
   );
