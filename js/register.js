@@ -84,7 +84,9 @@ var RegistrationOpen = React.createClass({
   render: function() {
     return(
       <button onClick={this.ClickButtonForm} className="lightbutton login">Login</button>
-      <div className="separator"></div>
+      <div className="separator">
+        
+      </div>
       <button onClick={this.ClickButtonForm} className="lightbutton register">Register</button>
     );
   }
