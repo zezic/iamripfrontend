@@ -20,7 +20,7 @@ var Registration = React.createClass({
     //console.log(this.state.username);
     //console.log(this.state.email);
     //console.log(this.state.password);
-    var dataForServer = JSON.stringify({username:this.state.username, email:this.state.email, password:this.state.password});
+    var dataForServer = JSON.stringify({username:'this.state.username', email:'this.state.email', password:'this.state.password'});
     this.setState({data:dataForServer});
     $.ajax({
       url: '/api/register',
@@ -36,7 +36,6 @@ var Registration = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-    GetInitialState()
   },
   render: function() {
     return (
