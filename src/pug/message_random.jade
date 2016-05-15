@@ -8,5 +8,8 @@ block content
       .row
         .col-lg-offset-1.col-md-offset-1.col-lg-10.col-md-10.message-view
           h1 #{message.text}
-          h3 - #{user.firstname}
+          if user.firstname is None
+            h3 - #{user.username}
+          else
+            h3 - #{user.firstname}
 block overlays
