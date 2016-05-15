@@ -103,7 +103,7 @@ var Login = React.createClass({
   getInitialState: function() {
     return {username:'', password:''};
   },
-  handleChangeName: function (e) {
+  handleChangeLogin: function (e) {
     this.setState({username: e.target.value});
   },
   handleChangePassword: function (e) {
@@ -112,6 +112,7 @@ var Login = React.createClass({
   LoginDataSubmit: function(e) {
     var dataForServer = JSON.stringify({username:this.state.username, password:this.state.password});
     this.setState({data:dataForServer});
+    console.log(dataForServer);
     Api({
       url: 'login',
       method: 'POST',
