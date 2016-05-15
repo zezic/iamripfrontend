@@ -1,16 +1,7 @@
 var Registration = React.createClass({
-  getInitialState: function () {
-    return {
-      username: '',
-      email: '',
-      password: ''
-    };
+  getInitialState: function() {
+    return {username:'', email:'', password:'', passwordrepeat:''};
   },
-  //propTypes: {
-  //  Username: React.PropTypes.string,
-   // Email: React.PropTypes.string,
-   // Password: React.PropTypes.string
-  //},
   handleChangeName: function (e) {
     this.setState({username: e.target.value});
   },
@@ -21,13 +12,9 @@ var Registration = React.createClass({
     this.setState({password: e.target.value});
   },
   handleChangePasswordRep: function (e) {
-    this.setState({passwordRep: e.target.value});
+    this.setState({passwordrepeat: e.target.value});
   },
   RegistrationDataSubmit: function(e) {
-    //e.preventDefault();
-    //console.log(this);
-   // console.log(this.propsil);
-   // console.log(this.props.password);
     var dataForServer = JSON.stringify({username:this.state.username, email:this.state.email, password:this.state.password});
     this.setState({data:dataForServer});
     $.ajax({
@@ -44,6 +31,7 @@ var Registration = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+    location.href="/profile/";
     //getInitialState();
   },
   render: function() {
@@ -57,7 +45,7 @@ var Registration = React.createClass({
           className="username"
           type="text" 
           placeholder="Username"
-          //value={this.state.username} 
+          value={this.state.username} 
           onChange={this.handleChangeName}
         />
       </div>
@@ -66,7 +54,7 @@ var Registration = React.createClass({
           className="email" 
           type="text" 
           placeholder="E-mail"
-        //  value={this.state.email} 
+          value={this.state.email} 
           onChange={this.handleChangeEmail}
         />
       </div>
@@ -75,7 +63,7 @@ var Registration = React.createClass({
           className="password" 
           type="password" 
           placeholder="Password"
-        //  value={this.state.password} 
+          value={this.state.password} 
           onChange={this.handleChangePassword}
         />
       </div>
@@ -84,6 +72,7 @@ var Registration = React.createClass({
           className="passwordrepeat" 
           type="password" 
           placeholder="Repeat Password"
+          value={this.state.passwordrepeat} 
           onChange={this.handleChangePasswordRep}
         />
       </div>
@@ -92,8 +81,24 @@ var Registration = React.createClass({
     );
   }
 });
+var RegistrationOpen = React.createClass({
+  ClickButtonForm:function(){
+
+  },
+  render: function() {
+    return(
+      <button onClick={this.ClickButtonForm} className="lightbutton login">Login</button>
+      <div className="separator"></div>
+      <button onClick={this.ClickButtonForm} className="lightbutton register">Register</button>
+    );
+  }
+});
 
 ReactDOM.render(
     <Registration/>,
     document.getElementById('registration')
+  );
+ReactDOM.render(
+    <RegistrationOpen/>,
+    document.getElementById('loginregister')
   );
