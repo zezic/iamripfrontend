@@ -13,7 +13,8 @@ var Registration = React.createClass({
   //},
   handleChange: function (e) {
     var tar = e.target.className;
-    var stit = {tar:e.target.value};
+    var stit = {username:'',email:'',password:''};
+    stit = {tar:e.target.value};
     //this.setState({tar: e.target.value});
   },
   RegistrationDataSubmit: function(e) {
