@@ -1,5 +1,7 @@
 doctype html
 head
+  - var logged_in = true
+  - var is_profile = true
   meta(charset="utf-8")
   title I am RIP
   link(rel="stylesheet", href="css/vendor/bootstrap.min.css")
@@ -24,13 +26,25 @@ body
     block content
   nav.navbar.navbar-fixed-top
     .container
-      .navbar-nav.pull-right-xs
-        a.help(href="/help")
+      if is_profile
+        a.smalllogo(href="/"): img(src="/images/logo.svg")
+      else
+        .navbar-nav.pull-right-xs
+          a.help(href="/help")
       .navbar-right
-        #loginregister.loginregister
-          button.lightbutton.login Login
-          .separator
-          button.lightbutton.register Register
+        if logged_in
+          .baractions#addmessageprofile
+            .add-message
+            .separator
+            if is_profile
+              .lightbutton.logout Logout
+            else
+              a.lightbutton(href="/profile") Profile
+        else
+          .baractions#loginregister
+            button.lightbutton.login Login
+            .separator
+            button.lightbutton.register Register
   .overlay.hidden
     .overlay-inner
       .closelayer
@@ -49,5 +63,6 @@ body
                 button.button Login
         block overlays
   script(type="text/babel", src="js/register.js")
+  script(src="js/ui.js")
 
 

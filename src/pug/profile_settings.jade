@@ -1,0 +1,12 @@
+extends ./profile.jade
+block profile_content
+  .row
+    .col-md-6.profilepane
+      .title Profile info
+      .inputblock: input(type="text", placeholder="First name").firstname
+      .inputblock: input(type="text", placeholder="Last name").lastname
+      .inputblock: input(type="password", placeholder="Password (leave blank to keep old one)").password
+      .inputblock: input(type="password", placeholder="Repeat password").passwordrepeat
+      button.button.squarish Save
+    .col-md-6.profilepane
+      .title Statistics
