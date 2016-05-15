@@ -1,25 +1,20 @@
 var Registration = React.createClass({
-  getInitialState: function () {
-    return {
-      username: '',
-      email: '',
-      password: ''
-    };
+  getInitialState: function() {
+    return {username:'', email:'', password:'', passwordRep:''};
   },
-  //propTypes: {
-  //  Username: React.PropTypes.string,
-   // Email: React.PropTypes.string,
-   // Password: React.PropTypes.string
-  //},
-  handleChange: function (e) {
-    var tar = e.target.className;
-    this.setState({tar: e.target.value});
+  handleChangeName: function (e) {
+    this.setState({username: e.target.value});
+  },
+  handleChangeEmail: function (e) {
+    this.setState({email: e.target.value});
+  },
+  handleChangePassword: function (e) {
+    this.setState({password: e.target.value});
+  },
+  handleChangePasswordRep: function (e) {
+    this.setState({passwordRep: e.target.value});
   },
   RegistrationDataSubmit: function(e) {
-    //e.preventDefault();
-    //console.log(this.state.username);
-    //console.log(this.state.email);
-    //console.log(this.state.password);
     var dataForServer = JSON.stringify({username:this.state.username, email:this.state.email, password:this.state.password});
     this.setState({data:dataForServer});
     $.ajax({
@@ -30,12 +25,18 @@ var Registration = React.createClass({
       contentType:'application/json',
       success: function(data) {
         this.setState({data: data});
+        location.href="/profile/";
       }.bind(this),
       error: function(xhr, status, err) {
         this.setState({data:dataForServer});
         console.error(this.props.url, status, err.toString());
+        ReactDOM.render(
+          <Registration/>,
+          document.getElementById('registration')
+        );
       }.bind(this)
     });
+    //getInitialState();
   },
   render: function() {
     return (
@@ -49,7 +50,7 @@ var Registration = React.createClass({
           type="text" 
           placeholder="Username"
           //value={this.state.username} 
-          onChange={this.handleChange}
+          onChange={this.handleChangeName}
         />
       </div>
       <div className="inputblock">
@@ -58,7 +59,7 @@ var Registration = React.createClass({
           type="text" 
           placeholder="E-mail"
         //  value={this.state.email} 
-          onChange={this.handleChange}
+          onChange={this.handleChangeEmail}
         />
       </div>
       <div className="inputblock">
@@ -67,7 +68,7 @@ var Registration = React.createClass({
           type="password" 
           placeholder="Password"
         //  value={this.state.password} 
-          onChange={this.handleChange}
+          onChange={this.handleChangePassword}
         />
       </div>
       <div className="inputblock">
@@ -75,7 +76,7 @@ var Registration = React.createClass({
           className="passwordrepeat" 
           type="password" 
           placeholder="Repeat Password"
-          onChange={this.handleChange}
+          onChange={this.handleChangePasswordRep}
         />
       </div>
       <button onClick={this.RegistrationDataSubmit} className="button">Register</button>
@@ -83,8 +84,34 @@ var Registration = React.createClass({
     );
   }
 });
+var RegistrationOpen = React.createClass({
+  getInitialState: function() {
+    return {register:'#registration',login:'#login'};
+  },
+  OnClickFormVisible : function(e) {
+    for (var key_up in this.state) {
+      $(this.state[key_up]).addClass('hidden');
+     }
+     $('.overlay').removeClass('hidden').css('display','none').fadeIn('fast');
+     var key_form = e.target.className.replace('lightbutton ','');
+     $(this.state[key_form]).removeClass('hidden');
+  },  
+  render: function() {
+    return (
+    <div>
+      <button className="lightbutton login" onClick={this.OnClickFormVisible}>Login</button>
+      <div className="separator"></div>
+      <button className="lightbutton register" onClick={this.OnClickFormVisible}>Register</button>
+    </div>
+    );
+  }
+});
 
 ReactDOM.render(
-    <Registration/>,
-    document.getElementById('registration')
-  );
+  <Registration/>,
+  document.getElementById('registration')
+);
+ReactDOM.render(
+  <RegistrationOpen/>,
+  document.getElementById('loginregister')
+);
