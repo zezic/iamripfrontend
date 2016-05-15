@@ -7,9 +7,12 @@ block content
     .table-cell
       .row
         .col-lg-offset-1.col-md-offset-1.col-lg-10.col-md-10.message-view
-          h1 #{message.text}
-          if user.firstname == None
-            h3 - #{user.username}
+          if message
+            h1 #{message.text}
+            if user.firstname == None
+              h3 - #{user.username}
+            else
+              h3 - #{user.firstname}
           else
-            h3 - #{user.firstname}
+            h3 No results :(
 block overlays
