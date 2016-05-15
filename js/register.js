@@ -17,19 +17,20 @@ var Registration = React.createClass({
   RegistrationDataSubmit: function(e) {
     var dataForServer = JSON.stringify({username:this.state.username, email:this.state.email, password:this.state.password});
     this.setState({data:dataForServer});
+    var that = this;
     Api({
       url: 'register',
       method: 'POST',
       data: dataForServer,
       fail: function(){
-        this.setState({data:dataForServer});
+        that.setState({data:dataForServer});
         ReactDOM.render(
           <Registration/>,
           document.getElementById('registration')
         );
       },
       ok: function(){
-        this.setState({data: data});
+        that.setState({data: data});
         location.href="/profile/";
       }
     });
@@ -112,20 +113,20 @@ var Login = React.createClass({
   LoginDataSubmit: function(e) {
     var dataForServer = JSON.stringify({username:this.state.username, password:this.state.password});
     this.setState({data:dataForServer});
-    console.log(dataForServer);
+    var that = this;
     Api({
       url: 'login',
       method: 'POST',
       data: dataForServer,
       fail: function(){
-        this.setState({data:dataForServer});
+        that.setState({data:dataForServer});
         ReactDOM.render(
           <Login/>,
           document.getElementById('login')
         );
       },
       ok: function(){
-        this.setState({data: data});
+        that.setState({data: data});
         location.href="/profile/";
       }
     });
