@@ -84,6 +84,64 @@ var Registration = React.createClass({
     );
   }
 });
+var Login = React.createClass({
+  getInitialState: function() {
+    return {username:'', password:''};
+  },
+  handleChangeName: function (e) {
+    this.setState({username: e.target.value});
+  },
+  handleChangePassword: function (e) {
+    this.setState({password: e.target.value});
+  },
+  LoginDataSubmit: function(e) {
+    var dataForServer = JSON.stringify({username:this.state.username, password:this.state.password});
+    this.setState({data:dataForServer});
+    $.ajax({
+      url: '/api/login',
+      dataType: 'json',
+      type: 'POST',
+      data:dataForServer,
+      contentType:'application/json',
+      success: function(data) {
+        this.setState({data: data});
+        location.href="/profile/";
+      }.bind(this),
+      error: function(xhr, status, err) {
+        this.setState({data:dataForServer});
+        console.error(this.props.url, status, err.toString());
+        ReactDOM.render(
+          <Login/>,
+          document.getElementById('login')
+        );
+      }.bind(this)
+    });
+    //getInitialState();
+  },
+  render: function() { 
+    return(
+      <div className="form"><img className="emblem" src="images/emblem.svg"/>
+        <div className="inputblock">
+          <input 
+            className="username" 
+            placeholder="Username"
+            type="text"
+            onChange={this.handleChangeLogin}
+          />
+        </div>
+        <div className="inputblock">
+          <input 
+            className="password" 
+            placeholder="Password"
+            type="password"
+            onChange={this.handleChangePassword}
+          />
+        </div>
+        <button onClick={this.LoginDataSubmit} className="button">Login</button>
+      </div>
+    );
+  }
+});
 var RegistrationOpen = React.createClass({
   getInitialState: function() {
     return {register:'#registration',login:'#login'};
