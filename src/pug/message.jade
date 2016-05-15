@@ -7,6 +7,9 @@ block content
     .table-cell
       .row
         .col-lg-offset-1.col-md-offset-1.col-lg-10.col-md-10.message-view
-          h1 #{message.text}
+          if message.is_processed:
+            h1 #{message.text}
+          else:
+            h1 Message hidden.
           h3 #{user.firstname}
 block overlays
