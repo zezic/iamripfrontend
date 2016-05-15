@@ -7,6 +7,15 @@ block content
     .table-cell
       .row
         .col-lg-offset-1.col-md-offset-1.col-lg-10.col-md-10.message-view
+          if message
+            - var qwe = []
+          else
+            - var message = {}
+
+          if author
+            - var qwe = []
+          else
+            - var author = ''
           h1 #{message.text}
           h3 #{author}
 block overlays
