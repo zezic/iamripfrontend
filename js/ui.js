@@ -106,7 +106,7 @@ $(document).ready(function(){
         ShowMessage(email_field.val()+' was added to subscribers.');
         email_field.val('');
       }
-    });
+    });author
   });
 
   // Delete message
@@ -197,7 +197,7 @@ $(document).ready(function(){
         ShowMessage('Your private message created');
         var new_uuid = data["uuid"];
         setTimeout(function(){
-          //location.href = "/message/"+new_uuid;
+          location.href = "/message/"+new_uuid;
         }, 2000);
       }
     });
