@@ -1,9 +1,5 @@
 extends ./profile.jade
 block profile_content
-  if messages
-    - var qwe = []
-  else
-    - var messages = []
   for message in messages
     .row.message(data-id=message.id, data-uuid=message.uuid)
       .col-lg-1
@@ -21,9 +17,9 @@ block profile_content
           .add-subscriber
         .row.subscribers
       .col-lg-3.text-right.time
-        .inputblock.compact: input(type="text", placeholder="60").hours
+        .inputblock.compact: input(type="text", placeholder="60", value=message.hours).hours
         .label Hrs
-        .inputblock.compact: input(type="text", placeholder="14").mins
+        .inputblock.compact: input(type="text", placeholder="14", value=message.minutes).mins
         .label Min
       .col-lg-1.text-right
         .delete

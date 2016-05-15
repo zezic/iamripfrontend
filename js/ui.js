@@ -119,7 +119,9 @@ $(document).ready(function(){
       data: {},
       fail: function(){ ShowMessage('Server returned error :( sorry'); },
       ok: function(){
-        message.block.slideUp().remove();
+        message_block.slideUp(function(){
+          message_block.remove();
+        });
       }
     });
   }); 
