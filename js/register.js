@@ -13,14 +13,15 @@ var Registration = React.createClass({
   //},
   handleChange: function (e) {
     var tar = e.target.className;
-    this.setState({tar: e.target.value});
+    var stit = {tar:e.target.value};
+    //this.setState({tar: e.target.value});
   },
   RegistrationDataSubmit: function(e) {
     //e.preventDefault();
     //console.log(this.state.username);
     //console.log(this.state.email);
     //console.log(this.state.password);
-    var dataForServer = JSON.stringify({username:this.state.username, email:this.state.email, password:this.state.password});
+    var dataForServer = JSON.stringify({username:stit.username, email:stit.email, password:stit.password});
     this.setState({data:dataForServer});
     $.ajax({
       url: '/api/register',
