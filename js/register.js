@@ -25,7 +25,7 @@ var Registration = React.createClass({
       contentType:'application/json',
       success: function(data) {
         this.setState({data: data});
-        location.href="/profile/";
+        location.href="/profile";
       }.bind(this),
       error: function(xhr, status, err) {
         this.setState({data:dataForServer});
