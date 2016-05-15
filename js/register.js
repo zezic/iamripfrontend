@@ -170,6 +170,10 @@ ReactDOM.render(
   document.getElementById('registration')
 );
 ReactDOM.render(
+  <Login/>,
+  document.getElementById('login')
+);
+ReactDOM.render(
   <RegistrationOpen/>,
   document.getElementById('loginregister')
 );
