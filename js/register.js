@@ -1,4 +1,7 @@
 var Registration = React.createClass({
+  getInitialState: function() {
+    return {username:'', email:'', password:'', passwordRep:''};
+  },
   handleChangeName: function (e) {
     this.setState({username: e.target.value});
   },
@@ -28,7 +31,7 @@ var Registration = React.createClass({
         this.setState({data:dataForServer});
         console.error(this.props.url, status, err.toString());
         ReactDOM.render(
-          <Registration className="erorr-submit"/>,
+          <Registration/>,
           document.getElementById('registration')
         );
       }.bind(this)
@@ -81,9 +84,34 @@ var Registration = React.createClass({
     );
   }
 });
-
+var RegistrationOpen = React.createClass({
+  getInitialState: function() {
+    return {register:'#registration',login:'#login'};
+  },
+  OnClickFormVisible : function(e) {
+    for (var key_up in this.state) {
+      $(this.state[key_up]).addClass('hidden');
+     }
+     $('.overlay').removeClass('hidden').css('display','none').fadeIn('fast');
+     var key_form = e.target.className.replace('lightbutton ','');
+     $(this.state[key_form]).removeClass('hidden');
+  },  
+  render: function() {
+    return (
+    <div>
+      <button className="lightbutton login" onClick={this.OnClickFormVisible}>Login</button>
+      <div className="separator"></div>
+      <button className="lightbutton register" onClick={this.OnClickFormVisible}>Register</button>
+    </div>
+    );
+  }
+});
 
 ReactDOM.render(
-    <Registration/>,
-    document.getElementById('registration')
-  );
+  <Registration/>,
+  document.getElementById('registration')
+);
+ReactDOM.render(
+  <RegistrationOpen/>,
+  document.getElementById('loginregister')
+);
