@@ -22,6 +22,8 @@ body
         a.smalllogo(href="/"): img(src="/images/logo.svg")
       else
         .navbar-nav.pull-right-xs
+          a.back(href="/")
+          .separator
           a.help(href="/help")
       .navbar-right
         if logged_in
