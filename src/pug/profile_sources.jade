@@ -1,22 +1,6 @@
 extends ./profile.jade
 block profile_content
-  .display-table
+  .display-table(style="position: fixed; top: 0; left: 0;")
     .table-cell
       p Under redevelopment
-  //if sources
-    //- var qwe = []
-  //else
-    //- var sources = []
-  //for source in sources
-    //.row.source(data-name=source.name)
-      //.col-lg-1.col-md-1.col-sm-2.col-xs-3
-        //.row.firstrow
-          //.power.active
-          //.icon
-      //.col-lg-4.col-md-5.col-sm-10.col-xs-9
-        //.title #{source.name} 
-          //span (#{source.name}.com)
-      //.col-lg-7.col-md-6.col-sm-12.col-xs-12
-        //.inputblock: input(type="text", placeholder="URL").url
-  //button.button.squarish Apply
 script(type="text/babel", src="/js/sourses.js")
