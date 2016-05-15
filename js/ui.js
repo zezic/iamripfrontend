@@ -56,9 +56,7 @@ $(document).ready(function(){
     props = ["firstname", "lastname", "password"]
     for (var prop in props) {
       var key = props[prop]
-      console.log(key);
       var target = 'input.'+key;
-      console.log(target);
       if ($(target).val().length > 0) {
         if (key == "password") {
           if ($(target).val() != $(target+"repeat").val()) {
@@ -67,7 +65,6 @@ $(document).ready(function(){
           }
         }
         data[key] = $(target).val();
-        console.log(data[key]);
       }
     }
     if (Object.keys(data).length > 0) {

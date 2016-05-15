@@ -10,9 +10,14 @@ block profile_content
         .row.firstrow
           .power.active
           .icon
-      .col-lg-4.col-md-5.col-sm-10.col-xs-9
+      .col-lg-4.col-md-2.col-sm-10.col-xs-9
         .title #{source.name} 
-          span (#{source.name}.com)
-      .col-lg-7.col-md-6.col-sm-12.col-xs-12
+          span (https://#{source.name}.com)
+      .col-lg-4.col-md-5.col-sm-8.col-xs-12
         .inputblock: input(type="text", placeholder="URL").url
+      .col-lg-3.col-md-4.col-sm-4.col-xs-12.text-right.time
+        .inputblock.compact: input(type="text", placeholder="60").days
+        .label Days
+        .inputblock.compact: input(type="text", placeholder="14").hours
+        .label Hours
   button.button.squarish Apply

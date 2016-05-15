@@ -281,17 +281,13 @@ nav
     font-size: 19px
     vertical-align: top
     display: inline-block
-    @media (max-width: 1199px)
-      margin-top: -4px
+    text-transform: capitalize
     @media (max-width: 991px)
       margin-top: 0px
       margin-bottom: 10px
     span
       color: $faded
-      @media (min-width: 992px) and (max-width: 1199px)
-        font-size: 12px
-        top: -10px
-        position: relative
+      text-transform: none
   .inputblock
     margin-top: -8px
     &.compact
