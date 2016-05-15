@@ -97,7 +97,7 @@ $(document).ready(function(){
       method: 'POST',
       data: {
         message_uuid: message_uuid,
-        email: email_field.val()
+        address: email_field.val()
       },
       fail: function(){ ShowMessage('Server returned error :( sorry'); },
       ok: function(){
