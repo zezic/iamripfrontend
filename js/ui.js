@@ -79,6 +79,126 @@ $(document).ready(function(){
       ShowMessage('Nothing to save.');
     }
   });
+
+  // Messages stuff
+
+  $('.row.message .icon').on('click', function() {
+    $(this).toggleClass('private').toggleClass('public');
+  });
+
+  // Add to subscribers
+
+  $('.add-subscriber').on('click', function() {
+    var message_uuid = $(this).parents('.row.message').data('uuid');
+    var email_field = $(this).siblings('.inputblock').find('input');
+    var subs_block = $(this).parents('.row.email').siblings('.subscribers');
+    Api({
+      url: 'destination',
+      method: 'POST',
+      data: {
+        message_uuid: message_uuid,
+        email: email_field.val()
+      },
+      fail: function(){ ShowMessage('Server returned error :( sorry'); },
+      ok: function(){
+        subs_block.text(email_field.val()+', '+subs_block.text());
+        ShowMessage(email_field.val()+' was added to subscribers.');
+        email_field.val('');
+      }
+    });
+  });
+
+  // Delete message
+
+  $('.row.message .delete').on('click', function() {
+    var message_id = $(this).parents('.row.message').data('id');
+    var message_block = $(this).parents('.row.message');
+    Api({
+      url: 'message/'+message_id,
+      method: 'DELETE',
+      data: {},
+      fail: function(){ ShowMessage('Server returned error :( sorry'); },
+      ok: function(){
+        message.block.slideUp().remove();
+      }
+    });
+  }); 
+
+  // Apply all messages
+
+  $('.applymessages').on('click', function() {
+    $('.row.message').each(function(index){
+      var message_block = $(this);
+      var message_id = $(this).data('id');
+      var message_text = $(this).find('textarea').val();
+      var hours = $(this).find('input.hours').val();
+      var minutes = $(this).find('input.mins').val();
+      var duration = hours*60 + minutes;
+      if ($(this).find('.icon').hasClass('private')) {
+        var is_private = true;
+      } else {
+        var is_private = false;
+      }
+      Api({
+        url: 'message/'+message_id,
+        method: 'PATCH',
+        data: {
+          text: message_text,
+          is_private: is_private,
+          duration: duration
+        },
+        fail: function(){ ShowMessage('Server returned error :( sorry'); },
+        ok: function(data){
+          message_block.addClass('green');
+          setTimeout(function(){
+            message_block.removeClass('green');
+          }, 200);
+        }
+      });
+    });
+  });
+
+  // Show Create Message
+
+  $('.add-message').on('click', function() {
+    $('.overlay #addmessage').removeClass('hidden');
+    $('.overlay').removeClass('hidden').css('display', 'none').fadeIn();
+    $('.overlay').css('display', 'table');
+  });
+  // Create Message
+
+  $('#addmessage .icon').on('click', function() {
+    $(this).toggleClass('private').toggleClass('public');
+  });
+
+  $('#addmessage button').on('click', function() {
+    var message_text = $('#addmessage textarea').val();
+    var hours = $('#addmessage').find('input.hours').val();
+    var minutes = $('#addmessage').find('input.mins').val();
+    var duration = parseInt(hours)*60 + parseInt(minutes);
+    if ($('#addmessage').find('.icon').hasClass('private')) {
+      var is_private = true;
+    } else {
+      var is_private = false;
+    }
+    Api({
+      url: 'message',
+      method: 'POST',
+      data: {
+        text: message_text,
+        is_private: is_private,
+        duration: duration
+      },
+      fail: function(){ ShowMessage('Server returned error :( sorry'); },
+      ok: function(data){
+        ShowMessage('Your private message created');
+        var new_uuid = data["uuid"];
+        setTimeout(function(){
+          //location.href = "/message/"+new_uuid;
+        }, 2000);
+      }
+    });
+  });
 });
 
 

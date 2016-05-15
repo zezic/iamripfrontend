@@ -1,23 +1,30 @@
 extends ./profile.jade
 block profile_content
-  if sources
+  if messages
     - var qwe = []
   else
-    - var sources = []
-  for source in sources
-    .row.source(data-name=source.name)
-      .col-lg-1.col-md-1.col-sm-2.col-xs-3
+    - var messages = []
+  for message in messages
+    .row.message(data-id=message.id, data-uuid=message.uuid)
+      .col-lg-1
         .row.firstrow
-          .power.active
-          .icon
-      .col-lg-4.col-md-2.col-sm-10.col-xs-9
-        .title #{source.name} 
-          span (https://#{source.name}.com)
-      .col-lg-4.col-md-5.col-sm-8.col-xs-12
-        .inputblock: input(type="text", placeholder="URL").url
-      .col-lg-3.col-md-4.col-sm-4.col-xs-12.text-right.time
-        .inputblock.compact: input(type="text", placeholder="60").days
-        .label Days
-        .inputblock.compact: input(type="text", placeholder="14").hours
-        .label Hours
-  button.button.squarish Apply
+          a.id(href="/message/"+message.uuid) ##{message.id}
+          if message.is_private
+            .icon.private
+          else
+            .icon.public
+      .col-lg-4
+        textarea(rows="3") #{message.text}
+      .col-lg-3
+        .row.email
+          .inputblock: input(type="text", placeholder="Subscriber E-mail").email
+          .add-subscriber
+        .row.subscribers
+      .col-lg-3.text-right.time
+        .inputblock.compact: input(type="text", placeholder="60").hours
+        .label Hrs
+        .inputblock.compact: input(type="text", placeholder="14").mins
+        .label Min
+      .col-lg-1.text-right
+        .delete
+  button.button.squarish.applymessages Apply

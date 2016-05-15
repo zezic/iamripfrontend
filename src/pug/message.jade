@@ -1,0 +1,12 @@
+extends ./includes/base.jade
+block backdrop
+  .backdrop.clouds.second
+  .backdrop.clouds.first
+block content
+  .display-table
+    .table-cell
+      .row
+        .col-lg-offset-1.col-md-offset-1.col-lg-10.col-md-10.message-view
+          h1 #{message.text}
+          h3 #{author}
+block overlays

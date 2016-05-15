@@ -45,6 +45,19 @@ body
         .row
           .col-md-4.col-md-offset-4
             #login.hidden
+        .row
+          .col-md-4.col-md-offset-4
+            #addmessage.hidden
+              .form
+                img.emblem(src="/images/emblem.svg")
+                .title New Message
+                textarea(rows="3")
+                .inputblock.compact: input(type="text", placeholder="60").hours
+                .label Hrs
+                .inputblock.compact: input(type="text", placeholder="14").mins
+                .label Min
+                .icon.private
+                button.button Create
         block overlays
   .overlay2#message(style="display: none;")
     .text Message

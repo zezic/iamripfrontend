@@ -155,7 +155,7 @@ nav
   @media (max-width: 767px) and (max-height: 300px)
     display: none
 
-.add-message
+.add-message, .add-subscriber
   background-image: url("/images/icon-add.svg")
   width: 18px
   height: 18px
@@ -164,6 +164,8 @@ nav
   display: inline-block
   padding: 24px 19px
   cursor: pointer
+.add-subscriber
+  padding: 19px 19px
 
 .separator
   display: inline-block
@@ -318,7 +320,85 @@ nav
     .power
       opacity: 1.0
 
+// Profile Messages
 
+.row.message
+  &::before
+    display: none !important
+  overflow: hidden
+  margin-bottom: 30px
+  background-color: rgba(240, 240, 240, 0.0)
+  transition: background-color 1s ease-in-out, outline 1s ease-in-out
+  outline: 10px solid rgba(240, 240, 240, 0.0)
+  &.green
+    transition: background-color 0.2s ease-in-out, outline 0.2s ease-in-out
+    background-color: rgba(240, 240, 240, 1.0)
+    outline: 10px solid rgba(240, 240, 240, 1.0)
+
+  .id
+    color: $fg
+    font-size: 19px
+    vertical-align: top
+    display: inline-block
+  .icon
+    background-position: center center
+    background-repeat: no-repeat
+    height: 28px
+    width: 30px
+    cursor: pointer
+    display: block
+    margin-top: 10px
+    &.private
+      background-image: url("/images/icon-private.svg")
+    &.public
+      background-image: url("/images/icon-public.svg")
+  textarea
+    background-color: transparent
+    border: 1px solid $faded
+    color: $fg
+    padding: 5px 10px
+    width: 100%
+    resize: none
+    font-size: 15px
+  .row.email
+    .inputblock
+      margin-top: -4px
+      display: inline-block
+      width: 80%
+      vertical-align: top
+  .inputblock
+    &.compact
+      margin-top: -4px
+      display: inline-block
+      &:not(:first-child)
+        margin-left: 10px
+      input
+        padding-left: 5px
+        padding-right: 5px
+        text-align: center
+  .label
+    color: $faded
+    font-size: 16px
+    font-weight: 500
+    display: inline-block
+    padding-right: 0px
+    padding-left: 3px
+  .delete
+    background-image: url("/images/close.svg")
+    display: inline-block
+    height: 40px
+    width: 40px
+    background-repeat: no-repeat
+    background-position: right center
+    cursor: pointer
+  .subscribers
+    font-size: 10px
+.inputblock.compact
+  display: inline-block
+  input
+    padding-right: 5px
+    padding-left: 5px
+    text-align: center
 
 // Overlay
 .overlay2
@@ -344,8 +424,8 @@ nav
   left: 0
   width: 100%
   height: 100%
-  background-color: rgba(255,255,255,0.8)
-  background: radial-gradient(white, rgba(255,255,255,0.9));
+  background-color: rgba(255,255,255,0.95)
+  //background: radial-gradient(white, rgba(255,255,255,0.9));
   .overlay-inner
     display: table-cell
     vertical-align: middle
@@ -372,6 +452,38 @@ nav
       display: block
       margin: 0 auto
       padding-bottom: 24px
+    .title
+      font-size: 18px
+      padding: 10px 0
+    textarea
+      background-color: transparent
+      border: 1px solid $faded
+      color: $fg
+      padding: 5px 10px
+      width: 100%
+      resize: none
+      font-size: 15px
+    .label
+      color: $fg
+      font-size: 14px
+      font-weight: 500
+      display: inline-block
+      padding-right: 0px
+      padding-left: 3px
+    .icon
+      background-position: center center
+      background-repeat: no-repeat
+      height: 28px
+      width: 30px
+      cursor: pointer
+      margin-top: 27px
+      vertical-align: top
+      margin-left: 10px
+      display: inline-block
+      &.private
+        background-image: url("/images/icon-private.svg")
+      &.public
+        background-image: url("/images/icon-public.svg")
 .overlay .form .button,
 .button.arrowed
   display: block
