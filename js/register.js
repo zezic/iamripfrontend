@@ -28,7 +28,7 @@ var Registration = React.createClass({
     //console.log(this);
    // console.log(this.propsil);
    // console.log(this.props.password);
-    var dataForServer = JSON.stringify({username:this.state.username, email:this.props.email, password:this.state.password});
+    var dataForServer = JSON.stringify({username:this.state.username, email:this.state.email, password:this.state.password});
     this.setState({data:dataForServer});
     $.ajax({
       url: '/api/register',
